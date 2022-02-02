@@ -15,14 +15,14 @@ RSpec.describe "Football Player Index" do
                                                     eligible: false)
     visit "/football_players"
 
-    expect(page).to have_content(player1.name)
-    expect(page).to have_content(player1.jersey_number)
-    expect(page).to have_content(player1.eligible)
-    expect(page).to have_content(player2.name)
-    expect(page).to have_content(player2.jersey_number)
-    expect(page).to have_content(player2.eligible)
-    expect(page).to have_content(player3.name)
-    expect(page).to have_content(player3.jersey_number)
-    expect(page).to have_content(player3.eligible)
+    expect(page).to have_content("Name: #{player1.name}")
+    expect(page).to have_content("Jersey Number: #{player1.jersey_number}")
+    expect(page).to have_content("Eligible?: #{player1.eligible}")
+    expect(page).to have_content("Name: #{player2.name}")
+    expect(page).to have_content("Jersey Number: #{player2.jersey_number}")
+    expect(page).to have_content("Eligible?: #{player2.eligible}")
+    expect(page).to have_content("Name: #{player3.name}")
+    expect(page).to have_content("Jersey Number: #{player3.jersey_number}")
+    expect(page).to have_content("Eligible?: #{player3.eligible}")
   end
 end
