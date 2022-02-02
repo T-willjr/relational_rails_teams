@@ -7,7 +7,9 @@ RSpec.describe BasketballTeam do
 
   describe 'validations' do
     it {should validate_presence_of :name }
-    it {should validate_presence_of :winning_record }
+    it {should allow_value(true).for(:winning_record) }
+    it {should allow_value(false).for(:winning_record) }
+    it {should allow_value(nil).for(:winning_record) }
     it {should validate_presence_of :titles }
   end
 end

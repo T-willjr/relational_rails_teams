@@ -7,7 +7,8 @@ RSpec.describe FootballTeam do
 
   describe 'validations' do
     it {should validate_presence_of :name }
-    it {should validate_presence_of :public }
+    it {should allow_value(true).for(:public) }
+    it {should allow_value(false).for(:public) }
     it {should validate_presence_of :titles }
   end
 end

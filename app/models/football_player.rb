@@ -3,5 +3,6 @@ class FootballPlayer < ApplicationRecord
 
   validates_presence_of :name
   validates_presence_of :jersey_number
-  validates_presence_of :eligible
+  validates :eligible,
+            inclusion: { in: [true, false] }
 end

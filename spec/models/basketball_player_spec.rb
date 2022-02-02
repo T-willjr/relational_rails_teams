@@ -7,7 +7,8 @@ RSpec.describe BasketballPlayer do
 
   describe 'validations' do
     it {should validate_presence_of :name }
-    it {should validate_presence_of :injured }
+    it {should allow_value(true).for(:injured) }
+    it {should allow_value(false).for(:injured) }
     it {should validate_presence_of :jersey_number }
   end
 end
