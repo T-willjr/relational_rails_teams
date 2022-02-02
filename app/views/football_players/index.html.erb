@@ -1,0 +1,7 @@
+<h1>Football Players:</h1>
+<hr>
+<% @players.each do |player| %>
+  <p>Name: <%= player.name %></p>
+  <p>Jersey Number: <%= player.jersey_number %></p>
+  <p>Eligible?: <%= player.eligible %></p>
+<% end %>
