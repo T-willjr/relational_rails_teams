@@ -9,5 +9,6 @@ RSpec.describe "Football Team Show" do
     expect(page).to have_content(team1.name)
     expect(page).to have_content(team1.public)
     expect(page).to have_content(team1.titles)
+    expect(page).to_not have_content(team.name)
   end
 end
