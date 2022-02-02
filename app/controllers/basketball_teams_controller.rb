@@ -1,5 +1,9 @@
 class BasketballTeamsController < ApplicationController
   def index
-    @team = BasketballTeam.all
+    @teams = BasketballTeam.all
+  end
+
+  def show
+    @team = BasketballTeam.find(params[:id])
   end
 end
