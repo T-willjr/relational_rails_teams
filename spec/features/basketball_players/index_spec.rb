@@ -18,6 +18,5 @@ RSpec.describe "Basketball Players" do
     expect(page).to have_content(player3.name)
     expect(page).to have_content(player3.injured)
     expect(page).to have_content(player3.jersey_number)
-    save_and_open_page
   end
 end
