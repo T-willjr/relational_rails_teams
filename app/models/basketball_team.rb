@@ -9,4 +9,8 @@ class BasketballTeam < ApplicationRecord
   def self.order_by_most_recently_created
     order("created_at")
   end
+
+  def number_of_players
+    self.basketball_players.count
+  end
 end
