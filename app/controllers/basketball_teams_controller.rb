@@ -1,6 +1,6 @@
 class BasketballTeamsController < ApplicationController
   def index
-    @teams = BasketballTeam.all
+    @teams = BasketballTeam.all.order_by_most_recently_created
   end
 
   def show
