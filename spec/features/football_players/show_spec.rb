@@ -11,7 +11,7 @@ RSpec.describe "Football Player Show" do
                                             eligible: true)
     visit "/football_players/#{player1.id}"
 
-    expect(page).to have_content("Name: #{player1.name}")
+    expect(page).to have_content(player1.name)
     expect(page).to have_content("Jersey Number: #{player1.jersey_number}")
     expect(page).to have_content("Eligible?: #{player1.eligible}")
     expect(page).to_not have_content(player2.name)
