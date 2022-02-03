@@ -22,4 +22,23 @@ RSpec.describe FootballTeam do
       expect(FootballTeam.order_by_most_recently_created).to eq([team2, team])
     end
   end
+
+  describe 'instance methods' do
+    it "can return a count of the number of players on a team" do
+      team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
+      team2 = FootballTeam.create!(name: "Georgia Tech", public: true, titles: 2)
+      player1 = team.football_players.create!(name: "Paul Leonard",
+                                                      jersey_number: 69,
+                                                      eligible: true)
+      player2 = team.football_players.create!(name: "Matthew Stafford",
+                                                      jersey_number: 9,
+                                                      eligible: true)
+      player3 = team2.football_players.create!(name: "Calvin Johnson",
+                                                      jersey_number: 81,
+                                                      eligible: false)
+
+      expect(team.player_count).to eq(2)
+      expect(team2.player_count).to eq(1)
+    end
+  end
 end
