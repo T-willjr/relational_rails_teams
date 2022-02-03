@@ -5,4 +5,8 @@ class BasketballTeam < ApplicationRecord
   validates :winning_record,
             inclusion: { in: [true, false, nil] }
   validates_presence_of :titles
+
+  def self.order_by_most_recently_created
+    order("created_at")
+  end
 end
