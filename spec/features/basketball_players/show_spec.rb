@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Basketball Players" do
-  it "should display all basketball players information" do
+  it "should display a players information associated with specific id" do
     team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
     team2 = BasketballTeam.create!(name: "Atlanta Dream", winning_record: true, titles: 0)
     team3 = BasketballTeam.create!(name: "Georgia Southern Eagles", winning_record: true, titles: 0)
