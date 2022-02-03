@@ -1,3 +1,5 @@
+<h1> Basketball Teams Index </h1>
+
 <% @teams.each do |team| %>
-<h3>Name: <%= team.name %></h3>
+<h3>Name: <%= team.name %> <%= team.created_at %> </h3>
 <% end %>
