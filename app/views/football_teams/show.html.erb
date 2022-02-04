@@ -2,3 +2,4 @@
 <h3>Public University Status: <%= @team.public %></h3>
 <h3>Number of Titles: <%= @team.titles %></h3>
 <h3>Number of players: <%= @team.player_count %></h3>
+<h4><%= link_to "#{@team.name}'s Players", "/football_teams/#{@team.id}/players" %></h4>
