@@ -19,4 +19,11 @@ RSpec.describe "Basketball Teams Players" do
     expect(page).to_not have_content(player3.name)
     expect(page).to_not have_content(player4.name)
   end
+
+  it "has a link to all basketball players" do
+    team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+    visit "/basketball_teams/#{team.id}/basketball_players"
+    click_link "All Basketball Players"
+    expect(current_path).to eq("/basketball_players")
+  end
 end

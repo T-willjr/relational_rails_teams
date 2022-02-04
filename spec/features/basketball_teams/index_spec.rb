@@ -24,4 +24,10 @@ RSpec.describe "BasketballTeams" do
     expect(page).to have_content(team2.created_at)
     expect(page).to have_content(team3.created_at)
   end
+
+  it "has a link to all basketball players" do
+    visit '/basketball_teams'
+    click_link "All Basketball Players"
+    expect(current_path).to eq("/basketball_players")
+  end
 end
