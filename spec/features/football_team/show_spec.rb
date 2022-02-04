@@ -11,4 +11,17 @@ RSpec.describe "Football Team Show" do
     expect(page).to have_content(team1.titles)
     expect(page).to_not have_content(team2.name)
   end
+
+  it "has a count of the number of players on the team" do
+    team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
+    player1 = team.football_players.create!(name: "Paul Leonard",
+                                                    jersey_number: 69,
+                                                    eligible: true)
+    player2 = team.football_players.create!(name: "Matthew Stafford",
+                                                    jersey_number: 9,
+                                                    eligible: true)
+    visit "/football_teams/#{team.id}"
+
+    expect(page).to have_content("Number of players: 2")
+  end
 end

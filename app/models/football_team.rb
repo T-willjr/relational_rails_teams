@@ -10,4 +10,8 @@ class FootballTeam < ApplicationRecord
   def self.order_by_most_recently_created
     order(created_at: :desc)
   end
+
+  def player_count
+    self.football_players.count
+  end
 end
