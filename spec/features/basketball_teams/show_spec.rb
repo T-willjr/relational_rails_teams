@@ -27,4 +27,24 @@ RSpec.describe "BasketballTeam Information" do
     visit "/basketball_teams/#{team4.id}"
     expect(page).to have_content("Number of Players: #{team4.number_of_players}")
   end
+
+  it "has a link to all basketball players" do
+    team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+    team2 = BasketballTeam.create!(name: "Atlanta Dream", winning_record: true, titles: 0)
+    team3 = BasketballTeam.create!(name: "Georgia Southern Eagles", winning_record: true, titles: 0)
+    team4 = BasketballTeam.create!(name: "Georgia Tech", winning_record: false, titles: 0)
+    player = team.basketball_players.create!(name: "Trae Young", injured: true, jersey_number: 11)
+    player2 = team.basketball_players.create!(name: "John Collins", injured: false, jersey_number: 20)
+    player3 = team2.basketball_players.create!(name: "Odyssey Sims", injured: false, jersey_number: 0)
+    player4 = team3.basketball_players.create!(name: "Jordan Usher", injured: false, jersey_number: 4)
+    visit "/basketball_teams/#{team.id}"
+    click_link "All Basketball Players"
+    expect(current_path).to eq("/basketball_players")
+    visit "/basketball_teams/#{team2.id}"
+    click_link "All Basketball Players"
+    expect(current_path).to eq("/basketball_players")
+    visit "/basketball_teams/#{team4.id}"
+    click_link "All Basketball Players"
+    expect(current_path).to eq("/basketball_players")
+  end
 end

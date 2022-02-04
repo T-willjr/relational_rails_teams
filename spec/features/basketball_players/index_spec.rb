@@ -19,4 +19,10 @@ RSpec.describe "Basketball Players" do
     expect(page).to have_content(player3.injured)
     expect(page).to have_content(player3.jersey_number)
   end
+
+  it "has a link to all basketball players" do
+    visit '/basketball_players'
+    click_link "All Basketball Players"
+    expect(current_path).to eq("/basketball_players")
+  end
 end
