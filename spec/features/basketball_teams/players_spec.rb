@@ -23,7 +23,7 @@ RSpec.describe "Basketball Teams Players" do
   it "has a link to all basketball players" do
     team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
     visit "/basketball_teams/#{team.id}/basketball_players"
-    click_link "All Basketball Players"
+    click_link "Basketball Players"
     expect(current_path).to eq("/basketball_players")
   end
 end

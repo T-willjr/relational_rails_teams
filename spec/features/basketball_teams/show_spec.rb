@@ -38,13 +38,13 @@ RSpec.describe "BasketballTeam Information" do
     player3 = team2.basketball_players.create!(name: "Odyssey Sims", injured: false, jersey_number: 0)
     player4 = team3.basketball_players.create!(name: "Jordan Usher", injured: false, jersey_number: 4)
     visit "/basketball_teams/#{team.id}"
-    click_link "All Basketball Players"
+    click_link "Basketball Players"
     expect(current_path).to eq("/basketball_players")
     visit "/basketball_teams/#{team2.id}"
-    click_link "All Basketball Players"
+    click_link "Basketball Players"
     expect(current_path).to eq("/basketball_players")
     visit "/basketball_teams/#{team4.id}"
-    click_link "All Basketball Players"
+    click_link "Basketball Players"
     expect(current_path).to eq("/basketball_players")
   end
 end
