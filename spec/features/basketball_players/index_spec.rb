@@ -22,7 +22,7 @@ RSpec.describe "Basketball Players" do
 
   it "has a link to all basketball players" do
     visit '/basketball_players'
-    click_link "All Basketball Players"
+    click_link "Basketball Players"
     expect(current_path).to eq("/basketball_players")
   end
 end
