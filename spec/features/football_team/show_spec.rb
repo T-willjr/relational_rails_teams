@@ -24,4 +24,18 @@ RSpec.describe "Football Team Show" do
 
     expect(page).to have_content("Number of players: 2")
   end
+
+  it 'has a link to Football Team Players #index' do
+    team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
+    player1 = team.football_players.create!(name: "Paul Leonard",
+                                                    jersey_number: 69,
+                                                    eligible: true)
+    player2 = team.football_players.create!(name: "Matthew Stafford",
+                                                    jersey_number: 9,
+                                                    eligible: true)
+    visit "/football_teams/#{team.id}"
+
+    click_link("#{team.name}'s Players")
+    expect(current_path).to eq("/football_teams/#{team.id}/players")                                                  
+  end
 end
