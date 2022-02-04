@@ -1,5 +1,7 @@
 <h1> <%= @team.name %> Roster </h1>
 
+<a href="/basketball_players">All Basketball Players</a>
+
 <% @players.each do |player| %>
   <h2> <%= player.name %> </h2>
   <h3> <%= player.injured %> </h3>
