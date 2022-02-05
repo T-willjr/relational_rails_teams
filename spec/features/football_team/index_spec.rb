@@ -26,4 +26,11 @@ RSpec.describe "Football Teams Index" do
     expect(team2.name).to appear_before(team1.name)
     expect(team1.name).to_not appear_before(team3.name)
   end
+
+  it "has a link to create a new football team" do
+    visit "/football_teams"
+
+    click_link("Create New Football Team")
+    expect(current_path).to eq("/football_teams/new")
+  end
 end
