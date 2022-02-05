@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   get '/basketball_teams', to: 'basketball_teams#index'
   get '/basketball_teams/new', to: 'basketball_teams#new'
   get '/basketball_teams/:id', to: 'basketball_teams#show'
-  get '/basketball_teams/:id/players', to: 'basketball_team_players#index'
+  post '/basketball_teams', to: 'basketball_teams#create'
+
   get '/basketball_players', to: 'basketball_players#index'
   get '/basketball_players/:id', to: 'basketball_players#show'
+
+  get '/basketball_teams/:id/players', to: 'basketball_team_players#index'
 
 
 
