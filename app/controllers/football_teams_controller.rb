@@ -11,4 +11,15 @@ class FootballTeamsController < ApplicationController
   def new
 
   end
+
+  def create
+    team = FootballTeam.create!(football_team_params)
+    redirect_to "/football_teams"
+  end
+
+  private
+
+    def football_team_params
+      params.permit(:name, :public, :titles)
+    end
 end
