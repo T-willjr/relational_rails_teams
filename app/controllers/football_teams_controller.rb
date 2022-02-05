@@ -7,4 +7,8 @@ class FootballTeamsController < ApplicationController
   def show
     @team = FootballTeam.find(params[:id])
   end
+
+  def new
+
+  end
 end
