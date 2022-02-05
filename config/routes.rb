@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
 
   get '/football_teams', to: 'football_teams#index'
+  get '/football_teams/new', to: 'football_teams#new'
   get '/football_teams/:id', to: 'football_teams#show'
 
   get '/football_players', to: 'football_players#index'
