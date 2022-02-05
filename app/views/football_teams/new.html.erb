@@ -1,0 +1,14 @@
+<h1>Create New Football Team</h1>
+
+<%= form_with url: "/football_teams", method: :post, local: true do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :public, "Public?" %>
+  <%= f.text_field :public %>
+
+  <%= f.label :titles, "Number of Titles" %>
+  <%= f.text_field :titles %>
+
+  <%= f.submit "Create Team" %>
+<% end %>
