@@ -36,6 +36,14 @@ RSpec.describe "Football Team Show" do
     visit "/football_teams/#{team.id}"
 
     click_link("#{team.name}'s Players")
-    expect(current_path).to eq("/football_teams/#{team.id}/players")                                                  
+    expect(current_path).to eq("/football_teams/#{team.id}/players")
+  end
+
+  it "has a link to update FBT, which routes to FBT #edit" do
+    team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
+    visit "/football_teams/#{team.id}"
+
+    click_link("Update #{team.name}")
+    expect(current_path).to eq("/football_teams/#{team.id}/edit")
   end
 end
