@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/basketball_teams/:id/players', to: 'basketball_team_players#index'
   get '/basketball_teams/:id/players/new', to: 'basketball_team_players#new'
+  post '/basketball_teams/:id/players', to: 'basketball_team_players#create'
 
 
 
