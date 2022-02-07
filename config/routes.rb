@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/basketball_players/:id', to: 'basketball_players#show'
 
   get '/basketball_teams/:id/players', to: 'basketball_team_players#index'
+  get '/basketball_teams/:id/players/new', to: 'basketball_team_players#new'
 
 
 

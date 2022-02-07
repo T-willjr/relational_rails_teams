@@ -3,4 +3,7 @@ class BasketballTeamPlayersController < ApplicationController
     @team = BasketballTeam.find(params[:id])
     @players = @team.basketball_players
   end
+
+  def new
+  end 
 end
