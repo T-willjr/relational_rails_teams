@@ -30,6 +30,6 @@ RSpec.describe "Football Team Players (parent child) Index" do
     visit "/football_teams/#{team.id}/players"
 
     click_link("Create Player")
-    expect(current_path).to eq("football_players/#{@team.id}/players/new")
+    expect(current_path).to eq("/football_teams/#{team.id}/players/new")
   end
 end
