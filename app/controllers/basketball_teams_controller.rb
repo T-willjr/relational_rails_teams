@@ -6,4 +6,18 @@ class BasketballTeamsController < ApplicationController
   def show
     @team = BasketballTeam.find(params[:id])
   end
+
+  def new
+  end
+
+  def create
+    team = BasketballTeam.create!(basketball_team_params)
+    redirect_to "/basketball_teams"
+  end
+
+  private
+
+  def basketball_team_params
+    params.permit(:name, :public, :titles)
+  end
 end
