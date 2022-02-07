@@ -26,4 +26,11 @@ RSpec.describe "Basketball Teams Players" do
     click_link "Basketball Players"
     expect(current_path).to eq("/basketball_players")
   end
+
+  it "has a link to create a new basketball player" do
+    team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+    visit "/basketball_teams/#{team.id}/players"
+    click_link "Create Player"
+    expect(current_path).to eq("/basketball_teams/#{team.id}/players/new")
+  end
 end
