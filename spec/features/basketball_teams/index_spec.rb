@@ -17,7 +17,7 @@ RSpec.describe "BasketballTeams" do
     team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
     team2 = BasketballTeam.create!(name: "Atlanta Dream", winning_record: true, titles: 0)
     team3 = BasketballTeam.create!(name: "Georgia Southern Eagles", winning_record: true, titles: 0)
-
+    
     visit '/basketball_teams'
 
     expect(page).to have_content(team.created_at)
