@@ -1,0 +1,13 @@
+<h1> Update <%= @team.name %></h1>
+<%= form_with url: "/football_teams/#{@team.id}", method: :patch, local: true do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :public, "Public?" %>
+  <%= f.text_field :public %>
+
+  <%= f.label :titles, "Number of Titles" %>
+  <%= f.text_field :titles %>
+
+  <%= f.submit "Submit" %>
+<% end %>
