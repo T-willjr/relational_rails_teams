@@ -7,7 +7,7 @@ class BasketballTeam < ApplicationRecord
   validates_presence_of :titles
 
   def self.order_by_most_recently_created
-    order("created_at")
+    order(created_at: :desc)
   end
 
   def number_of_players

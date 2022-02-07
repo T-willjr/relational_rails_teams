@@ -18,7 +18,8 @@ RSpec.describe BasketballTeam do
       team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
       team2 = BasketballTeam.create!(name: "Atlanta Dream", winning_record: true, titles: 0)
       team3 = BasketballTeam.create!(name: "Georgia Southern Eagles", winning_record: true, titles: 0)
-      expect(BasketballTeam.order_by_most_recently_created).to eq([team,team2,team3])
+      expect(BasketballTeam.order_by_most_recently_created).to eq([team3,team2,team])
+      expect(BasketballTeam.order_by_most_recently_created).to_not eq([team,team2,team3])
     end
   end
 
