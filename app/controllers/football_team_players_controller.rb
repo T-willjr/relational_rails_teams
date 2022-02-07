@@ -5,4 +5,8 @@ class FootballTeamPlayersController < ApplicationController
     @players = FootballPlayer.where(football_team_id: @team.id)
   end
 
+  def new
+
+  end
+
 end

@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get '/football_players/:id', to: 'football_players#show'
 
   get '/football_teams/:id/players', to: 'football_team_players#index'
+  get '/football_teams/:id/players/new', to: 'football_team_players#new'
 end
