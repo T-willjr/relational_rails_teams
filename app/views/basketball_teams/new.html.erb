@@ -1,11 +1,14 @@
-<form action="/basketball_teams" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Enter a new Team:</p>
-  <label for="Tname">Team Name:</label><br>
-  <input type="text" name='basketball_team[name]'/></textarea><br/>
-  <label for="winning record">Winning Record:</label><br>
-  <input type="text" name='basketball_team[winning_record]'/></textarea><br/>
-  <label for="titles">Titles:</label><br>
-  <input type="text" name='basketball_team[titles]'/></textarea><br/>
-  <input type='submit'/>
-</form>
+<h1>Create New Basketball Team</h1>
+
+<%= form_with url: "/basketball_teams", method: :post, local: true do |form| %>
+  <%= form.label :name, "Name" %>
+  <%= form.text_field :name %>
+
+  <%= form.label :winning_record, "Winning Record" %>
+  <%= form.text_field :winning_record %>
+
+  <%= form.label :titles, "Titles" %>
+  <%= form.text_field :titles %>
+
+  <%= form.submit "Submit" %>
+<% end %>

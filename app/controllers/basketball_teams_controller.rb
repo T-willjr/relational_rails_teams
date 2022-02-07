@@ -11,12 +11,13 @@ class BasketballTeamsController < ApplicationController
   end
 
   def create
-    team = BasketballTeam.new({
-    name: params[:basketball_team][:name],
-    winning_record: params[:basketball_team][:winning_record],
-    titles: params[:basketball_team][:titles]
-    })
-    team.save
-    redirect_to '/basketball_teams'
+    team = BasketballTeam.create!(basketball_team_params)
+    redirect_to "/basketball_teams"
+  end
+
+  private
+
+  def basketball_team_params
+    params.permit(:name, :public, :titles)
   end
 end
