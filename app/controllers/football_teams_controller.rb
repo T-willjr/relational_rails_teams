@@ -21,6 +21,12 @@ class FootballTeamsController < ApplicationController
     @team = FootballTeam.find(params[:id])
   end
 
+  def update
+    team = FootballTeam.find(params[:id])
+    team.update(football_team_params)
+    redirect_to "/football_teams/#{team.id}"
+  end
+
   private
 
     def football_team_params
