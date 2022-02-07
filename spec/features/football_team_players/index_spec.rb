@@ -24,4 +24,12 @@ RSpec.describe "Football Team Players (parent child) Index" do
     expect(page).to have_content("Eligible?: #{player2.eligible}")
     expect(page).to_not have_content(player3.name)
   end
+
+  it "has a link to add new players" do
+    team = FootballTeam.create!(name: "Georgia Bulldogs", public: false, titles: 2)
+    visit "/football_teams/#{team.id}/players"
+
+    click_link("Create Player")
+    expect(current_path).to eq("football_players/#{@team.id}/players/new")
+  end
 end
