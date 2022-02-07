@@ -1,0 +1,12 @@
+<%= form_with url: "/basketball_teams/#{@team.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name, "Name" %>
+  <%= form.text_field :name %>
+
+  <%= form.label :winning_record, "Winning Record" %>
+  <%= form.text_field :winning_record %>
+
+  <%= form.label :titles, "Titles" %>
+  <%= form.text_field :titles %>
+
+  <%= form.submit "Submit" %>
+<% end %>
