@@ -1,0 +1,13 @@
+<h1>Create New Player for <%= @team.name %></h1>
+<%= form_with url: "/football_teams/#{@team.id}/players", method: :post, local: true do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :eligible, "Eligible?" %>
+  <%= f.text_field :eligible %>
+
+  <%= f.label :jersey_number, "Jersey Number" %>
+  <%= f.text_field :jersey_number %>
+
+  <%= f.submit "Create Player" %>
+<% end %>
