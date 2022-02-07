@@ -15,6 +15,16 @@ class BasketballTeamsController < ApplicationController
     redirect_to "/basketball_teams"
   end
 
+  def edit
+    @team = BasketballTeam.find(params[:id])
+  end
+
+  def update
+    team = BasketballTeam.find(params[:id])
+    team.update(basketball_team_params)
+    redirect_to "/basketball_teams/#{team.id}"
+  end
+
   private
 
   def basketball_team_params
