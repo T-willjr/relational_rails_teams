@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/basketball_teams', to: 'basketball_teams#index'
   get '/basketball_teams/new', to: 'basketball_teams#new'
+  get '/basketball_teams/:id/edit', to: 'basketball_teams#edit'
   get '/basketball_teams/:id', to: 'basketball_teams#show'
   post '/basketball_teams', to: 'basketball_teams#create'
 
