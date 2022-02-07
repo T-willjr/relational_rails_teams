@@ -17,6 +17,10 @@ class FootballTeamsController < ApplicationController
     redirect_to "/football_teams"
   end
 
+  def edit
+    @team = FootballTeam.find(params[:id])
+  end
+
   private
 
     def football_team_params
