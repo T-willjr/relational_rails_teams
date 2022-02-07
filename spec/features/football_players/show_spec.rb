@@ -16,4 +16,15 @@ RSpec.describe "Football Player Show" do
     expect(page).to have_content("Eligible?: #{player1.eligible}")
     expect(page).to_not have_content(player2.name)
   end
+
+  it "has a link to Update the player, this link takes the user to the edit page" do
+    team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
+    player1 = team.football_players.create!(name: "Paul Leonard",
+                                            jersey_number: 69,
+                                            eligible: true)
+    visit "/football_players/#{player1.id}"
+
+    click_link("Update #{player1.name}")
+    expect(current_path).to eq("/football_players/#{player1.id}/edit")
+  end
 end

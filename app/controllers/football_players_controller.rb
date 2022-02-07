@@ -7,4 +7,21 @@ class FootballPlayersController < ApplicationController
   def show
     @player = FootballPlayer.find(params[:id])
   end
+
+  def edit
+    @player = FootballPlayer.find(params[:id])
+  end
+
+  def update
+    player = FootballPlayer.find(params[:id])
+    player.update(fbp_params)
+    redirect_to "/football_players/#{player.id}"
+  end
+
+
+    private
+
+      def fbp_params
+        params.permit(:name, :eligible, :jersey_number, :football_team_id)
+      end
 end
