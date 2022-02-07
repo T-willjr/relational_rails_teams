@@ -28,6 +28,6 @@ class BasketballTeamsController < ApplicationController
   private
 
   def basketball_team_params
-    params.permit(:name, :public, :titles)
+    params.permit(:name, :winning_record, :titles)
   end
 end
