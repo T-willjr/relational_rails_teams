@@ -1,0 +1,14 @@
+<h1>Create New Basketball Player</h1>
+
+<%= form_with url: "/basketball_teams/#{@team.id}/players", method: :post, local: true do |form| %>
+  <%= form.label :name, "Name" %>
+  <%= form.text_field :name %>
+
+  <%= form.label :injured, "Injured" %>
+  <%= form.text_field :injured %>
+
+  <%= form.label :jersey_number, "Jersey Number" %>
+  <%= form.text_field :jersey_number %>
+
+  <%= form.submit "Submit" %>
+<% end %>

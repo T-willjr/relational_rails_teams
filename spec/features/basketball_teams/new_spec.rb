@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "New Basketball Team Form" do
-
   it "creates new basketball team" do
     visit "/basketball_teams/new"
     fill_in 'Name', with: "Hillgrove Hawks"

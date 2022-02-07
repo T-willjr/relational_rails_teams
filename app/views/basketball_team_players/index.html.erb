@@ -1,5 +1,7 @@
 <h1> <%= @team.name %> Roster </h1>
 
+<%= link_to "Create Player", "/basketball_teams/#{@team.id}/players/new"%>
+
 
 <% @players.each do |player| %>
   <h2> <%= player.name %> </h2>
