@@ -28,7 +28,7 @@ RSpec.describe FootballPlayer do
 
         expect(FootballPlayer.all.count).to eq(3)
         expect(FootballPlayer.eligiblity_filter).to eq([player1, player2])
-        expect(FootballPlayer.eligiblity_filter.count).to eq(3)                                      
+        expect(FootballPlayer.eligiblity_filter.count).to eq(2)                                      
       end
     end
   end
