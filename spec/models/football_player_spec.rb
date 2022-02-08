@@ -13,7 +13,7 @@ RSpec.describe FootballPlayer do
   end
 
   describe 'class methods' do
-    describe 'eligiblity_filter' do
+    describe 'eligibility_filter' do
       it "returns only players who have a true status for :eligible" do
         team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
         player1 = team.football_players.create!(name: "Paul Leonard",
@@ -27,8 +27,8 @@ RSpec.describe FootballPlayer do
                                                         eligible: false)
 
         expect(FootballPlayer.all.count).to eq(3)
-        expect(FootballPlayer.eligiblity_filter).to eq([player1, player2])
-        expect(FootballPlayer.eligiblity_filter.count).to eq(2)                                      
+        expect(FootballPlayer.eligibility_filter).to eq([player1, player2])
+        expect(FootballPlayer.eligibility_filter.count).to eq(2)
       end
     end
   end

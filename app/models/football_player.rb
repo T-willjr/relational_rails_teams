@@ -6,7 +6,7 @@ class FootballPlayer < ApplicationRecord
   validates :eligible,
             inclusion: { in: [true, false] }
 
-  def self.eligiblity_filter
+  def self.eligibility_filter
     where(eligible: true)
   end
 end
