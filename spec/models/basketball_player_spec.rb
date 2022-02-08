@@ -11,4 +11,16 @@ RSpec.describe BasketballPlayer do
     it {should allow_value(false).for(:injured) }
     it {should validate_presence_of :jersey_number }
   end
+
+  it "should display only injured basketball players" do
+    team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+    team2 = BasketballTeam.create!(name: "Atlanta Dream", winning_record: true, titles: 0)
+    team3 = BasketballTeam.create!(name: "Georgia Southern Eagles", winning_record: true, titles: 0)
+    player = team.basketball_players.create!(name: "Trae Young", injured: true, jersey_number: 11)
+    player2 = team.basketball_players.create!(name: "John Collins", injured: true, jersey_number: 20)
+    player3 = team2.basketball_players.create!(name: "Odyssey Sims", injured: false, jersey_number: 0)
+    player4 = team3.basketball_players.create!(name: "Jordan Usher", injured: false, jersey_number: 4)
+    expect(BasketballPlayer.injured?).to eq([player, player2])
+    expect(BasketballPlayer.injured?).to_not eq([player3, player4])
+  end
 end

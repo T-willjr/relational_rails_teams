@@ -1,6 +1,6 @@
 class BasketballPlayersController < ApplicationController
   def index
-    @players = BasketballPlayer.all
+    @players = BasketballPlayer.injured?
   end
 
   def show
