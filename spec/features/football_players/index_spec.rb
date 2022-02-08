@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Football Player Index" do
-  it "When I visit the football players index, I see every player including their attributes" do
+  it "When I visit the football players index, I see every player that eligible == true for,  including their attributes" do
     team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
     team2 = FootballTeam.create!(name: "Georgia Tech", public: true, titles: 2)
     player1 = team.football_players.create!(name: "Paul Leonard",
@@ -12,6 +12,9 @@ RSpec.describe "Football Player Index" do
                                                     eligible: true)
     player3 = team2.football_players.create!(name: "Calvin Johnson",
                                                     jersey_number: 81,
+                                                    eligible: true)
+    player4 = team.football_players.create!(name: "I have a false boolean value",
+                                                    jersey_number: 99,
                                                     eligible: false)
     visit "/football_players"
 
@@ -24,5 +27,6 @@ RSpec.describe "Football Player Index" do
     expect(page).to have_content("Name: #{player3.name}")
     expect(page).to have_content("Jersey Number: #{player3.jersey_number}")
     expect(page).to have_content("Eligible?: #{player3.eligible}")
+    expect(page).to_not have_content(player4.name)
   end
 end
