@@ -32,4 +32,27 @@ RSpec.describe "Football Team Players (parent child) Index" do
     click_link("Create Player")
     expect(current_path).to eq("/football_teams/#{team.id}/players/new")
   end
+
+  it "has a link to sort players alphabetically.  Link refreshes the page and sorts players alphabetically" do
+    team = FootballTeam.create!(name: "Georgia Bulldogs", public: false, titles: 2)
+    player1 = team.football_players.create!(name: "Matthew Stafford",
+                                                    jersey_number: 69,
+                                                    eligible: true)
+    player2 = team.football_players.create!(name: "Paul Leonard",
+                                                    jersey_number: 9,
+                                                    eligible: true)
+    player3 = team.football_players.create!(name: "Calvin Johnson",
+                                                    jersey_number: 81,
+                                                    eligible: false)
+    visit "/football_teams/#{team.id}/players"
+    
+    expect(player2.name).to appear_before(player3.name)
+
+    click_link "Sort Players Alphabetically"
+
+    expect(current_path).to eq("/football_teams/#{team.id}/players")
+    expect(player3.name).to appear_before(player1.name)
+    expect(player1.name).to appear_before(player2.name)
+    expect(player3.name).to appear_before(player2.name)
+  end
 end

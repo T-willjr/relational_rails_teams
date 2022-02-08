@@ -14,4 +14,8 @@ class FootballTeam < ApplicationRecord
   def player_count
     self.football_players.count
   end
+
+  def alpha_order
+    football_players.order(:name)
+  end
 end
