@@ -23,4 +23,14 @@ RSpec.describe BasketballPlayer do
     expect(BasketballPlayer.injured?).to eq([player, player2])
     expect(BasketballPlayer.injured?).to_not eq([player3, player4])
   end
+
+  describe "#alphabetical_order" do
+    it "orders players alphabetically" do
+      team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+      player = team.basketball_players.create!(name: "Trae Young", injured: false, jersey_number: 11)
+      player2 = team.basketball_players.create!(name: "John Collins", injured: false, jersey_number: 20)
+      player3 = team.basketball_players.create!(name: "Kevin Huerter", injured: false, jersey_number: 3)
+      expect(team.basketball_players.alphabetical_order).to eq([player2,player3,player])
+    end
+  end
 end
