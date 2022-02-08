@@ -2,7 +2,11 @@ class FootballTeamPlayersController < ApplicationController
 
   def index
     @team = FootballTeam.find(params[:id])
-    @players = FootballPlayer.where(football_team_id: @team.id)
+    if params[:sort]
+      @players = @team.alpha_order
+    else
+      @players = FootballPlayer.where(football_team_id: @team.id)
+    end
   end
 
   def new
