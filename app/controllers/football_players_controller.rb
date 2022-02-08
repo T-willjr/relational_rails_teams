@@ -1,7 +1,7 @@
 class FootballPlayersController < ApplicationController
 
   def index
-    @players = FootballPlayer.all
+    @players = FootballPlayer.eligibility_filter
   end
 
   def show
