@@ -40,5 +40,20 @@ RSpec.describe FootballTeam do
       expect(team.player_count).to eq(2)
       expect(team2.player_count).to eq(1)
     end
+
+    it "can order its own players alphabetically" do
+      team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
+      player1 = team.football_players.create!(name: "Matthew Stafford",
+                                                      jersey_number: 69,
+                                                      eligible: true)
+      player2 = team.football_players.create!(name: "Paul Leonard",
+                                                      jersey_number: 9,
+                                                      eligible: true)
+      player3 = team.football_players.create!(name: "Calvin Johnson",
+                                                      jersey_number: 81,
+                                                      eligible: false)
+
+      expect(team.alpha_order).to eq([player3, player1, player2])
+    end
   end
 end
