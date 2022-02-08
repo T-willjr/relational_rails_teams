@@ -9,4 +9,8 @@ class BasketballPlayer < ApplicationRecord
   def self.injured?
     where(injured: :true)
   end
+
+  def self.alphabetical_order
+    order(:name)
+  end
 end
