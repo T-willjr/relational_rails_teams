@@ -2,7 +2,16 @@
 
 <%= link_to "Create Player", "/basketball_teams/#{@team.id}/players/new"%>
 <%= link_to "Sort Players Alphabetically", "/basketball_teams/#{@team.id}/players?sort=asc"%>
+<br>
+<br>
+<%= form_with url: "/basketball_teams/#{@team.id}/players", method: :get, local: true do |form| %>
 
+  <%= form.label :jersey_number, "Jersey Number Greater Than:" %>
+  <%= form.text_field :jersey_number %>
+
+  <%= form.submit "Submit" %>
+<% end %>
+<br>
 
 <% @players.each do |player| %>
   <h2> <%= player.name %> </h2>

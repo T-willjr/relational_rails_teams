@@ -1,10 +1,11 @@
 class BasketballTeamPlayersController < ApplicationController
   def index
+    @team = BasketballTeam.find(params[:id])
     if params[:sort]
-      @team = BasketballTeam.find(params[:id])
       @players = @team.basketball_players.alphabetical_order
+    elsif params[:jersey_number]
+      @players = @team.basketball_players.jersey_number_search(params[:jersey_number])
     else
-      @team = BasketballTeam.find(params[:id])
       @players = @team.basketball_players
     end
   end
