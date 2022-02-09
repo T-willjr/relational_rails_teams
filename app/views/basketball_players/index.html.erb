@@ -6,4 +6,5 @@
   <h2> <%= player.name %> </h2>
   <h3> <%= player.injured %> </h3>
   <h3> <%= player.jersey_number %> </h3>
+  <%= link_to "Update Player", "/basketball_players/#{player.id}/edit" %>
 <% end %>
