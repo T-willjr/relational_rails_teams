@@ -58,4 +58,20 @@ RSpec.describe "BasketballTeam Information" do
     click_link "Update Team"
     expect(current_path).to eq("/basketball_teams/#{@team2.id}/edit")
   end
+
+  it "deletes team link deletes a basketballt team " do
+    visit "/basketball_teams"
+    expect(page).to have_content(@team.name)
+    visit "/basketball_teams/#{@team.id}"
+    expect(page).to have_content(@team.name)
+    click_link "Delete Team"
+    expect(current_path).to eq("/basketball_teams")
+    expect(page).to_not have_content(@team.name)
+
+    visit "/basketball_teams/#{@team2.id}"
+    expect(page).to have_content(@team2.name)
+    click_link "Delete Team"
+    expect(current_path).to eq("/basketball_teams")
+    expect(page).to_not have_content(@team2.name)
+  end
 end

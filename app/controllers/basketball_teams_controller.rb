@@ -25,6 +25,11 @@ class BasketballTeamsController < ApplicationController
     redirect_to "/basketball_teams/#{team.id}"
   end
 
+  def destroy
+    BasketballTeam.destroy(params[:id])
+    redirect_to "/basketball_teams"
+  end
+
   private
 
   def basketball_team_params

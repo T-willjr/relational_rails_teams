@@ -7,3 +7,4 @@
 <h3> Number of Players: <%= @team.number_of_players %></h3>
 
 <%= link_to "Update Team", "/basketball_teams/#{@team.id}/edit"%>
+<%= link_to "Delete Team", "/basketball_teams/#{@team.id}", method: :delete%>
