@@ -46,4 +46,19 @@ RSpec.describe "Football Teams Index" do
     click_link("Edit #{team1.name}")
     expect(current_path).to eq("/football_teams/#{team1.id}/edit")
   end
+
+  it "has a link to delete each team next to their name" do
+    team1 = FootballTeam.create!(name: "Georgia Bulldogs", public: false, titles: 2)
+    team2 = FootballTeam.create!(name: "Georgia Tech", public: true, titles: 1)
+    visit "/football_teams"
+
+    expect(team2.name).to appear_before("Delete #{team2.name}")
+    expect("Delete #{team2.name}").to appear_before(team1.name)
+    expect(team1.name).to appear_before("Delete #{team1.name}")
+
+    click_link("Delete #{team1.name}")
+
+    expect(current_path).to eq("/football_teams")
+    expect(page).to_not have_content(team1.name)
+  end
 end

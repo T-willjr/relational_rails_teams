@@ -3,4 +3,5 @@
 <% @teams.each do |team| %>
   <h3><%= team.name %></h3>
   <%= link_to "Edit #{team.name}", "/football_teams/#{team.id}/edit" %>
+  <%= link_to "Delete #{team.name}", "/football_teams/#{team.id}/destroy", method: :delete %>
 <% end %>
