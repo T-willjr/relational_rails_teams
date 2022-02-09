@@ -1,5 +1,5 @@
 class FootballTeam < ApplicationRecord
-  has_many :football_players
+  has_many :football_players, dependent: :destroy
 
   validates_presence_of :name
   validates :public,
