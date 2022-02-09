@@ -1,5 +1,5 @@
 class BasketballTeam < ApplicationRecord
-  has_many :basketball_players
+  has_many :basketball_players, dependent: :destroy
 
   validates_presence_of :name
   validates :winning_record,
