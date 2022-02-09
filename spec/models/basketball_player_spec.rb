@@ -33,4 +33,16 @@ RSpec.describe BasketballPlayer do
       expect(team.basketball_players.alphabetical_order).to eq([player2,player3,player])
     end
   end
+
+  describe "jersey_number_search" do
+    it "displays jersey_number above a certain number" do
+      team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+      player = team.basketball_players.create!(name: "Trae Young", injured: false, jersey_number: 11)
+      player2 = team.basketball_players.create!(name: "John Collins", injured: false, jersey_number: 20)
+      player3 = team.basketball_players.create!(name: "Kevin Huerter", injured: false, jersey_number: 3)
+      number = 10
+      expect(team.basketball_players.jersey_number_search(number)).to eq([player, player2])
+      expect(team.basketball_players.jersey_number_search(number)).to_not eq([player3])
+    end
+  end
 end
