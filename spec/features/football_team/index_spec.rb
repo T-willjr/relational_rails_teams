@@ -33,4 +33,17 @@ RSpec.describe "Football Teams Index" do
     click_link("Create New Football Team")
     expect(current_path).to eq("/football_teams/new")
   end
+
+  it "has a link to edit beside each team" do
+    team1 = FootballTeam.create!(name: "Georgia Bulldogs", public: false, titles: 2)
+    team2 = FootballTeam.create!(name: "Georgia Tech", public: true, titles: 1)
+    visit "/football_teams"
+
+    expect(team2.name).to appear_before("Edit #{team2.name}")
+    expect("Edit #{team2.name}").to appear_before(team1.name)
+    expect(team1.name).to appear_before("Edit #{team1.name}")
+
+    click_link("Edit #{team1.name}")
+    expect(current_path).to eq("/football_teams/#{team1.id}/edit")
+  end
 end
