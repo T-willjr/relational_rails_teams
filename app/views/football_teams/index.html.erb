@@ -2,4 +2,5 @@
 <%= link_to "Create New Football Team", "/football_teams/new" %>
 <% @teams.each do |team| %>
   <h3><%= team.name %></h3>
+  <%= link_to "Edit #{team.name}", "/football_teams/#{team.id}/edit" %>
 <% end %>
