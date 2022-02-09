@@ -7,5 +7,12 @@
   <p>Eligible?: <%= player.eligible %></p>
   <hr>
 <% end %>
+
 <%= link_to "Create Player", "/football_teams/#{@team.id}/players/new" %>
 <%= link_to "Sort Players Alphabetically", "/football_teams/#{@team.id}/players?sort=asc" %>
+<%= form_with url: "/football_teams/#{@team.id}/players", method: :get, local: true do |f| %>
+  <%= f.label :jersey_number, 'Show only players with a higher jersey number than: ' %>
+  <%= f.text_field :jersey_number %>
+
+  <%= f.submit 'Apply' %>
+<% end %>

@@ -18,4 +18,8 @@ class FootballTeam < ApplicationRecord
   def alpha_order
     football_players.order(:name)
   end
+
+  def jersey_numbers_higher_than(number)
+    football_players.where("jersey_number > ?", number)
+  end
 end

@@ -45,7 +45,7 @@ RSpec.describe "Football Team Players (parent child) Index" do
                                                     jersey_number: 81,
                                                     eligible: false)
     visit "/football_teams/#{team.id}/players"
-    
+
     expect(player2.name).to appear_before(player3.name)
 
     click_link "Sort Players Alphabetically"
@@ -54,5 +54,27 @@ RSpec.describe "Football Team Players (parent child) Index" do
     expect(player3.name).to appear_before(player1.name)
     expect(player1.name).to appear_before(player2.name)
     expect(player3.name).to appear_before(player2.name)
+  end
+
+  it "has a form to input a number value for jersey number. When submitted, page is refreshed and only players with a higher jersey number are listed" do
+    team = FootballTeam.create!(name: "Georgia Bulldogs", public: false, titles: 2)
+    player1 = team.football_players.create!(name: "Matthew Stafford",
+                                                    jersey_number: 69,
+                                                    eligible: true)
+    player2 = team.football_players.create!(name: "Paul Leonard",
+                                                    jersey_number: 9,
+                                                    eligible: true)
+    player3 = team.football_players.create!(name: "Calvin Johnson",
+                                                    jersey_number: 81,
+                                                    eligible: false)
+    visit "/football_teams/#{team.id}/players"
+
+    fill_in :jersey_number, with: '10'
+    click_button 'Apply'
+
+    expect(current_path).to eq("/football_teams/#{team.id}/players")
+    expect(page).to have_content(player1.name)
+    expect(page).to have_content(player3.name)
+    expect(page).to_not have_content(player2.name)
   end
 end
