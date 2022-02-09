@@ -5,3 +5,4 @@
 <h3> <%= @player.injured %> </h3>
 
 <%= link_to "Update Player", "/basketball_players/#{@player.id}/edit" %>
+<%= link_to "Delete Player", "/basketball_players/#{@player.id}", method: :delete%>
