@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/basketball_players/:id', to: 'basketball_players#show'
   get '/basketball_players/:id/edit', to: 'basketball_players#edit'
   patch '/basketball_players/:id', to: 'basketball_players#update'
+  delete '/basketball_players/:id', to: 'basketball_players#destroy'
 
   get '/basketball_teams/:id/players', to: 'basketball_team_players#index'
   get '/basketball_teams/:id/players/new', to: 'basketball_team_players#new'

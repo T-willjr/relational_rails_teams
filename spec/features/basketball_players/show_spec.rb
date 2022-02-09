@@ -40,4 +40,23 @@ RSpec.describe "Basketball Players" do
     click_link "Update Player"
     expect(current_path).to eq("/basketball_players/#{player2.id}/edit")
   end
+
+  it "has a link to delete a basketball player" do
+    team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+    player = team.basketball_players.create!(name: "Trae Young", injured: true, jersey_number: 11)
+    team2 = BasketballTeam.create!(name: "Atlanta Dream", winning_record: true, titles: 0)
+    player2 = team2.basketball_players.create!(name: "Odyssey Sims", injured: false, jersey_number: 0)
+    visit "/basketball_players"
+    expect(page).to have_content(player.name)
+    visit "/basketball_players/#{player.id}"
+    click_link "Delete Player"
+    expect(current_path).to eq("/basketball_players")
+    expect(page).to_not have_content(player.name)
+
+    visit "/basketball_players/#{player2.id}"
+    expect(page).to have_content(player2.name)
+    click_link "Delete Player"
+    expect(current_path).to eq("/basketball_players")
+    expect(page).to_not have_content(player.name)
+  end
 end
