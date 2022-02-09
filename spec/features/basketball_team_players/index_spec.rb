@@ -52,4 +52,19 @@ RSpec.describe "Basketball Teams Players" do
     expect(player2.name).to appear_before(player.name)
     expect(player3.name).to appear_before(player.name)
   end
+
+
+  it "has a form to enter basketball jersey number" do
+    team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+    player = team.basketball_players.create!(name: "Trae Young", injured: true, jersey_number: 11)
+    player2 = team.basketball_players.create!(name: "John Collins", injured: false, jersey_number: 20)
+    player3 = team.basketball_players.create!(name: "Kevin Huerter", injured: false, jersey_number: 3)
+    visit "/basketball_teams/#{team.id}/players"
+    fill_in :jersey_number, with: '10'
+    click_button "Submit"
+    expect(current_path).to eq("/basketball_teams/#{team.id}/players")
+    expect(page).to have_content(player.name)
+    expect(page).to have_content(player2.name)
+    expect(page).to_not have_content(player3.name)
+  end
 end
