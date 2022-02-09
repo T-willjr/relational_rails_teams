@@ -3,3 +3,4 @@
 <h4>Jersey Number: <%= @player.jersey_number %></h4>
 <h4>Eligible?: <%= @player.eligible %></h4>
 <%= link_to "Update #{@player.name}", "/football_players/#{@player.id}/edit" %>
+<%= link_to "Delete #{@player.name}", "/football_players/#{@player.id}/destroy", method: :delete %>

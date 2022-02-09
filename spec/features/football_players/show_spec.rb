@@ -27,4 +27,17 @@ RSpec.describe "Football Player Show" do
     click_link("Update #{player1.name}")
     expect(current_path).to eq("/football_players/#{player1.id}/edit")
   end
+
+  it "has a link to delete the player. When link is clicked, user is routed to Players index where player is not listed" do
+    team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
+    player1 = team.football_players.create!(name: "Paul Leonard",
+                                            jersey_number: 69,
+                                            eligible: true)
+    visit "/football_players/#{player1.id}"
+
+    click_link("Delete #{player1.name}")
+
+    expect(current_path).to eq("/football_players")
+    expect(page).to_not have_content(player1.name)
+  end
 end
