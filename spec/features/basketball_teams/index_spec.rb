@@ -43,4 +43,16 @@ RSpec.describe "BasketballTeams" do
     click_link("Update Team", match: :first)
     expect(current_path).to eq("/basketball_teams/#{team.id}/edit")
   end
+
+  it "has a link to delete a basketball team" do
+    team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+    team2 = BasketballTeam.create!(name: "Atlanta Dream", winning_record: true, titles: 0)
+    team3 = BasketballTeam.create!(name: "Georgia Southern Eagles", winning_record: true, titles: 0)
+
+    visit "/basketball_teams"
+    expect(page).to have_content(team3.name)
+    click_link("Delete Team", match: :first)
+    expect(current_path).to eq("/basketball_teams")
+    expect(page).to_not have_content(team3.name)
+  end
 end

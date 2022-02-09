@@ -59,7 +59,7 @@ RSpec.describe "BasketballTeam Information" do
     expect(current_path).to eq("/basketball_teams/#{@team2.id}/edit")
   end
 
-  it "deletes team link deletes a basketballt team " do
+  it "has a link to delete a basketball team " do
     visit "/basketball_teams"
     expect(page).to have_content(@team.name)
     visit "/basketball_teams/#{@team.id}"
