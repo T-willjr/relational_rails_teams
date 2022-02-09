@@ -13,4 +13,8 @@ class BasketballPlayer < ApplicationRecord
   def self.alphabetical_order
     order(:name)
   end
+
+  def self.jersey_number_search(number)
+    where("jersey_number > ?", number)
+  end
 end
