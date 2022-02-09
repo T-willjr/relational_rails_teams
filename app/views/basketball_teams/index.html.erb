@@ -4,4 +4,5 @@
 
 <% @teams.each do |team| %>
 <h3>Name: <%= team.name %> <%= team.created_at %> </h3>
+<%= link_to "Update Team", "/basketball_teams/#{team.id}/edit"%>
 <% end %>
