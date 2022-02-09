@@ -17,6 +17,11 @@ class BasketballPlayersController < ApplicationController
     redirect_to "/basketball_players/#{@player.id}"
   end
 
+  def destroy
+    BasketballPlayer.destroy(params[:id])
+    redirect_to "/basketball_players"
+  end
+
   private
 
   def player_params
