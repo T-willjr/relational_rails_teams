@@ -4,3 +4,4 @@
 <h3>Number of players: <%= @team.player_count %></h3>
 <h4><%= link_to "#{@team.name}'s Players", "/football_teams/#{@team.id}/players" %></h4>
 <h4><%= link_to "Update #{@team.name}", "/football_teams/#{@team.id}/edit" %></h4>
+<h4><%= link_to "Delete #{@team.name}", "/football_teams/#{@team.id}/destroy", method: :delete %></h4>
