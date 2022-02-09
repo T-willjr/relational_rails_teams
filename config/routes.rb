@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   post '/football_teams', to: 'football_teams#create'
   get '/football_teams/:id/edit', to: 'football_teams#edit'
   patch '/football_teams/:id', to: 'football_teams#update'
+  delete '/football_teams/:id/destroy', to: 'football_players#destroy'
 
   get '/football_players', to: 'football_players#index'
   get '/football_players/:id', to: 'football_players#show'
