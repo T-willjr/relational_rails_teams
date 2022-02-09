@@ -55,5 +55,19 @@ RSpec.describe FootballTeam do
 
       expect(team.alpha_order).to eq([player3, player1, player2])
     end
+
+    it "it can show only players with jery number's higher than a given threshold" do
+      team = FootballTeam.create!(name: "Georgia Bulldogs", public: true, titles: 2)
+      player1 = team.football_players.create!(name: "Matthew Stafford",
+                                                      jersey_number: 69,
+                                                      eligible: true)
+      player2 = team.football_players.create!(name: "Paul Leonard",
+                                                      jersey_number: 9,
+                                                      eligible: true)
+      player3 = team.football_players.create!(name: "Calvin Johnson",
+                                                      jersey_number: 81,
+                                                      eligible: false)
+      expect(team.jersey_numbers_higher_than(10)).to eq([player1, player3])
+    end
   end
 end
