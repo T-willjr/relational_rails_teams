@@ -1,7 +1,12 @@
 class BasketballTeamPlayersController < ApplicationController
   def index
-    @team = BasketballTeam.find(params[:id])
-    @players = @team.basketball_players
+    if params[:sort]
+      @team = BasketballTeam.find(params[:id])
+      @players = @team.basketball_players.alphabetical_order
+    else
+      @team = BasketballTeam.find(params[:id])
+      @players = @team.basketball_players
+    end
   end
 
   def new
@@ -13,6 +18,7 @@ class BasketballTeamPlayersController < ApplicationController
     @player = team.basketball_players.create(player_params)
     redirect_to "/basketball_teams/#{team.id}/players"
   end
+
 
   private
 

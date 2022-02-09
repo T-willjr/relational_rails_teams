@@ -33,4 +33,23 @@ RSpec.describe "Basketball Teams Players" do
     click_link "Create Player"
     expect(current_path).to eq("/basketball_teams/#{team.id}/players/new")
   end
+
+  it "has a link to display players alphabetically" do
+    team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+    visit "/basketball_teams/#{team.id}/players"
+    click_link "Sort Players Alphabetically"
+    expect(current_path).to eq("/basketball_teams/#{team.id}/players")
+  end
+
+  it "displays players sorted alphabetically" do
+    team = BasketballTeam.create!(name: "Atlanta Hawks", winning_record: true, titles: 1)
+    player = team.basketball_players.create!(name: "Trae Young", injured: false, jersey_number: 11)
+    player2 = team.basketball_players.create!(name: "John Collins", injured: false, jersey_number: 20)
+    player3 = team.basketball_players.create!(name: "Kevin Huerter", injured: false, jersey_number: 3)
+    visit "/basketball_teams/#{team.id}/players"
+    click_link "Sort Players Alphabetically"
+    expect(player2.name).to appear_before(player3.name)
+    expect(player2.name).to appear_before(player.name)
+    expect(player3.name).to appear_before(player.name)
+  end
 end
